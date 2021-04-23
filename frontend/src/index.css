@@ -26,7 +26,8 @@ body{
   height: 100%;
 }
 header{
-  grid-area: header; /*Conectamos este elemento al template del header */
+  grid-area: header; 
+  /*Conectamos este elemento al template del header */
   background-color: #203040;
 }
 main{
@@ -101,4 +102,7 @@ img.medium{
 .rating span{
   color: #f0c040;
   margin: 0.1rem;
+}
+.rating span:last-child{
+  color: #040404
 }
