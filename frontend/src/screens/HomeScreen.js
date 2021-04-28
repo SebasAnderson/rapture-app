@@ -20,8 +20,8 @@ export default function HomeScreen() {
         //el arreglo del back se transfiera a "data" en el front
         setLoading(false);
         setProducts(data);
-      } catch (error) {
-        setError(error.mesagge);
+      } catch (err) {
+        setError(err.mesagge);
         setLoading(false);
       }
     };
