@@ -194,6 +194,10 @@ img.large {
   color: #a02020;
   background-color: #ffe0e0;
 }
+.alert-success {
+  color: #20a020;
+  background-color: #e0e0ff;
+}
 
 /* Form */
 
@@ -242,5 +246,5 @@ img.large {
 
 .checkout-steps > div.active {
   border-top-color: #ff8000;
-  color:#ff8000;
+  color: #ff8000;
 }
