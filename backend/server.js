@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/rapture", {
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
-//Routers
+//Routers2
 app.use("/api/uploads", uploadRouter);
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
