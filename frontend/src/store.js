@@ -4,6 +4,7 @@ import { cartReducer } from "./reducers/cartReducers";
 import {
   orderCreateReducer,
   OrderDetailsReducer,
+  orderListReducer,
   orderMineListReducer,
   orderPayReducer,
 } from "./reducers/orderReducers";

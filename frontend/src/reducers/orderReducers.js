@@ -42,7 +42,6 @@ export const OrderDetailsReducer = (state = { loading: true }, action) => {
       return state;
   }
 };
-
 export const orderPayReducer = (state = {}, action) => {
   switch (action.type) {
     case ORDER_PAY_REQUEST:
@@ -57,7 +56,6 @@ export const orderPayReducer = (state = {}, action) => {
       return state;
   }
 };
-
 export const orderMineListReducer = (state = { orders: [] }, action) => {
   switch (action.type) {
     case ORDER_MINE_LIST_REQUEST:
