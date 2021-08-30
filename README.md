@@ -8,6 +8,8 @@ El como y con que vamos a desarrollar:
 - Development: ESLint, Babel, Git, Github,
 - Deployment: Heroku
 
+Paso a paso del desarrollo de Rapture. Dividido por topicos y sus subtopicos.
+
 1. Introduction to this proyect
    1. what we will build
    2. what we will learn
