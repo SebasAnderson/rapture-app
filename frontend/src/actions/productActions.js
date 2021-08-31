@@ -1,5 +1,5 @@
 import Axios from "axios";
-import axios from "../../node_modules/axios/index";
+//import axios from "../../node_modules/axios/index";
 import {
   PRODUCT_CREATE_FAIL,
   PRODUCT_CREATE_REQUEST,
