@@ -1,4 +1,6 @@
 import axios from "axios";
+import { disconnect } from "mongoose";
+import { useDispatch } from "react-redux";
 import {
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
@@ -13,6 +15,9 @@ import {
   USER_UPDATE_PROFILE_FAIL,
   USER_UPDATE_PROFILE_REQUEST,
   USER_UPDATE_PROFILE_SUCCESS,
+  USER_LIST_REQUEST,
+  USER_LIST_SUCCESS,
+  USER_LIST_FAIL,
 } from "../constants/userConstants";
 
 export const register = (name, email, password) => async (dispatch) => {
@@ -57,6 +62,7 @@ export const signout = () => (dispatch) => {
   localStorage.removeItem("cartItems");
   localStorage.removeItem("shippingAddress");
   dispatch({ type: USER_SIGNOUT });
+  document.location.location.href = "/signin";
 };
 
 export const detailsUser = (userId) => async (dispatch, getState) => {
@@ -96,5 +102,25 @@ export const updateUserProfile = (user) => async (dispatch, setState) => {
         ? error.response.data.message
         : error.message;
     dispatch({ type: USER_UPDATE_PROFILE_FAIL, payload: message });
+  }
+};
+export const listUsers = () => async (dispatch, getState) => {
+  dispatch({ type: USER_LIST_REQUEST });
+  try {
+    const {
+      userSignin: { userInfo },
+    } = getState();
+    const { data } = await axios.get("/api/users", {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
+    dispatch({ type: USER_LIST_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: USER_LIST_FAIL, payload: message });
   }
 };
