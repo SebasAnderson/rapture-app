@@ -367,3 +367,73 @@ $ npm start
     1. build api for delete users
     2. create order details constant, action and reducer
     3. Use action in UserListScreen
+48. Edit User
+    1. build api for update users
+    2. create edit screen UI
+48. Implement Seller View
+    1. add seller menu
+    2. create seller route
+    3. list products for seller
+    4. list orders for seller
+    5. add Seller to Product List and Details Screen
+49. Create Seller Page
+    1. create seller page
+    2. update product component and product screen
+    3. update product routes
+50. Add Top Seller Carousel
+    1. install react carousel
+    2. implement actions and reducers for top sellers
+    3. use react carousel with data in Home Screen
+51. Force Order Items From One Seller
+    1.  update addToCart action to buy from one seller at an order
+52. Create Search Box and Search Screen
+    1. create search bar in Header.js
+    2. add style
+    3. handle submit form
+    4. edit parse url to get query string
+    5. update product list api for search by name
+53. Add Advanced Search Filter
+    1. filter by category
+    2. filter by price range
+    3. filter by average rating
+54. Complete Advanced Search
+    1. filter by price
+    2. filter by rating
+    3. sort by price, rating, ...
+55. Rate and Review Products
+    1. rate products
+    2. create actions and reducers
+56. Choose Address On Google Map
+    1. create google map credentials
+    2. update .env file with Google Api Key
+    3. create api to send google api to frontend
+    4. create map screen
+    5. fetch google api
+    6. getUserLocation
+    7. install @react-google-maps/api
+    8. use it in shipping screen
+    9. apply map to the checkout screen
+57. BugFix: Running Locally Without Issue
+     1.  add seller info to data.js
+     2.  seed product data with admin info as seller
+     3.  fix isSeller and isAdmin on update user
+     4.  remove auth from user details
+58. Implement Pagination
+     1.  add pagination to product router in backend
+     2.  apply page number to actions and reducers in frontend
+     3.  show page numbers in search screen
+59. Email order receipt by mailgun
+     1.  create mailgun account
+     2.  add and verify your domain to mailgun
+     3.  install mailgun-js
+     4.  set api key in env file
+     5.  change pay order in orderRouter
+     6.  send email the 
+60. Create Dashboard Screen
+     1.  Create chart data in backend
+     2.  Build Chart screen
+61. Implement Live Chat With Customers
+     1.  use socket io to create backend
+     2.  create chat box component
+     3.  create support screen
+62. Future Hosting
