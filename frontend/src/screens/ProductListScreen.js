@@ -13,6 +13,7 @@ import {
 } from "../constants/productConstants";
 
 export default function ProductListScreen(props) {
+  const sellerMode = props.match.path.indexOf("/seller") >= 0;
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
@@ -23,7 +24,6 @@ export default function ProductListScreen(props) {
     success: successCreate,
     product: createdProduct,
   } = productCreate;
-
   const productDelete = useSelector((state) => state.productDelete);
   const {
     loading: loadingDelete,
@@ -31,6 +31,8 @@ export default function ProductListScreen(props) {
     success: successDelete,
   } = productDelete;
 
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
   const dispatch = useDispatch();
   useEffect(() => {
     if (successCreate) {
@@ -40,8 +42,16 @@ export default function ProductListScreen(props) {
     if (successDelete) {
       dispatch({ type: PRODUCT_DELETE_RESET });
     }
-    dispatch(listProducts());
-  }, [createdProduct, dispatch, props.history, successCreate, successDelete]);
+    dispatch(listProducts({ seller: sellerMode ? userInfo._id : "" }));
+  }, [
+    createdProduct,
+    dispatch,
+    props.history,
+    sellerMode,
+    successCreate,
+    successDelete,
+    userInfo._id,
+  ]);
 
   const deleteHandler = (product) => {
     if (window.confirm("Are you sure to delete?")) {
@@ -59,10 +69,8 @@ export default function ProductListScreen(props) {
           Create Product
         </button>
       </div>
-
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
-
       {loadingCreate && <LoadingBox></LoadingBox>}
       {errorCreate && <MessageBox variant="danger">{errorCreate}</MessageBox>}
       {loading ? (

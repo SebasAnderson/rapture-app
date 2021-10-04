@@ -1,5 +1,4 @@
 import Axios from "axios";
-//import axios from "../../node_modules/axios/index";
 import {
   PRODUCT_CREATE_FAIL,
   PRODUCT_CREATE_REQUEST,
@@ -17,17 +16,20 @@ import {
   PRODUCT_DELETE_FAIL,
   PRODUCT_DELETE_SUCCESS,
 } from "../constants/productConstants";
-export const listProducts = () => async (dispatch) => {
-  dispatch({
-    type: PRODUCT_LIST_REQUEST,
-  });
-  try {
-    const { data } = await Axios.get("/api/products");
-    dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
-  } catch (error) {
-    dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
-  }
-};
+
+export const listProducts =
+  ({ seller = "" }) =>
+  async (dispatch) => {
+    dispatch({
+      type: PRODUCT_LIST_REQUEST,
+    });
+    try {
+      const { data } = await Axios.get(`/api/products?seller=${seller}`);
+      dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+    } catch (error) {
+      dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
+    }
+  };
 
 export const detailsProduct = (productId) => async (dispatch) => {
   dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId });
