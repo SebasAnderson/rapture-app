@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { detailsUser, updateUserProfile } from "../actions/userActions";
-import MessageBox from "../components/MessageBox";
 import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
 import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants";
-
 export default function ProfileScreen() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,7 +19,7 @@ export default function ProfileScreen() {
   const { loading, error, user } = userDetails;
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
   const {
-    success: successsUpdate,
+    success: successUpdate,
     error: errorUpdate,
     loading: loadingUpdate,
   } = userUpdateProfile;
@@ -41,9 +40,9 @@ export default function ProfileScreen() {
   }, [dispatch, userInfo._id, user]);
   const submitHandler = (e) => {
     e.preventDefault();
-    // dispatch update profice
+    // dispatch update profile
     if (password !== confirmPassword) {
-      alert("Password and Confirm Password are not matched");
+      alert("Password and Confirm Password Are Not Matched");
     } else {
       dispatch(
         updateUserProfile({
@@ -74,12 +73,12 @@ export default function ProfileScreen() {
             {errorUpdate && (
               <MessageBox variant="danger">{errorUpdate}</MessageBox>
             )}
+            {successUpdate && (
+              <MessageBox variant="success">
+                Profile Updated Successfully
+              </MessageBox>
+            )}
             <div>
-              {successsUpdate && (
-                <MessageBox variant="success">
-                  Profile Update Successfully
-                </MessageBox>
-              )}
               <label htmlFor="name">Name</label>
               <input
                 id="name"
@@ -109,11 +108,11 @@ export default function ProfileScreen() {
               ></input>
             </div>
             <div>
-              <label htmlFor="confirm password">Confirm Password</label>
+              <label htmlFor="confirmPassword">confirm Password</label>
               <input
-                id="password"
+                id="confirmPassword"
                 type="password"
-                placeholder="Confirm password"
+                placeholder="Enter confirm password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
               ></input>
             </div>

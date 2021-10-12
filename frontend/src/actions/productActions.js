@@ -16,7 +16,6 @@ import {
   PRODUCT_DELETE_FAIL,
   PRODUCT_DELETE_SUCCESS,
 } from "../constants/productConstants";
-
 export const listProducts =
   ({ seller = "" }) =>
   async (dispatch) => {
@@ -30,7 +29,6 @@ export const listProducts =
       dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
     }
   };
-
 export const detailsProduct = (productId) => async (dispatch) => {
   dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId });
   try {

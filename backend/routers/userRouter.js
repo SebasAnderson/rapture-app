@@ -4,11 +4,23 @@ import bcrypt from "bcryptjs";
 import data from "../data.js";
 import User from "../models/userModel.js";
 import { generateToken, isAdmin, isAuth } from "../utils.js";
+
 const userRouter = express.Router();
+
+userRouter.get(
+  "/top-sellers",
+  expressAsyncHandler(async (req, res) => {
+    const topSellers = await User.find({ isSeller: true })
+      .sort({ "seller.rating": -1 })
+      .limit(3);
+    res.send(topSellers);
+  })
+);
+
 userRouter.get(
   "/seed",
   expressAsyncHandler(async (req, res) => {
-    await User.remove({});
+    // await User.remove({});
     const createdUsers = await User.insertMany(data.users);
     res.send({ createdUsers });
   })
@@ -33,7 +45,6 @@ userRouter.post(
     res.status(401).send({ message: "Invalid email or password" });
   })
 );
-
 userRouter.post(
   "/register",
   expressAsyncHandler(async (req, res) => {
@@ -53,7 +64,6 @@ userRouter.post(
     });
   })
 );
-
 userRouter.get(
   "/:id",
   expressAsyncHandler(async (req, res) => {
@@ -94,17 +104,15 @@ userRouter.put(
     }
   })
 );
-//API para listar usuarios
 userRouter.get(
   "/",
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
-    const users = await User.find({}); //le pasamos un objeto vacio, asi devuelve todo
+    const users = await User.find({});
     res.send(users);
   })
 );
-//API para borrar usuarios
 userRouter.delete(
   "/:id",
   isAuth,
@@ -123,7 +131,6 @@ userRouter.delete(
     }
   })
 );
-//API para actualizar perfiles
 userRouter.put(
   "/:id",
   isAuth,

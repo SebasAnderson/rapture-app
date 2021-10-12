@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
+
 //Extraemos un componente de app.js para no hacer tan largo el codigo
 export default function Product(props) {
   const { product } = props;
@@ -17,7 +18,14 @@ export default function Product(props) {
           rating={product.rating}
           numReviews={product.numReviews}
         ></Rating>
-        <div className="price">${product.price}</div>
+        <div className="row">
+          <div className="price">${product.price}</div>
+          <div>
+            <Link to={`/seller/${product.seller._id}`}>
+              {product.seller.seller.name}
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
