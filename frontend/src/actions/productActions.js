@@ -17,13 +17,15 @@ import {
   PRODUCT_DELETE_SUCCESS,
 } from "../constants/productConstants";
 export const listProducts =
-  ({ seller = "" }) =>
+  ({ seller = "", name = "" }) =>
   async (dispatch) => {
     dispatch({
       type: PRODUCT_LIST_REQUEST,
     });
     try {
-      const { data } = await Axios.get(`/api/products?seller=${seller}`);
+      const { data } = await Axios.get(
+        `/api/products?seller=${seller}&name=${name}`
+      );
       dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
     } catch (error) {
       dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
