@@ -37,7 +37,7 @@ export default function ProfileScreen() {
         setSellerDescription(user.seller.description);
       }
     }
-  }, [dispatch, userInfo._id, user, sellerName, sellerLogo, sellerDescription]);
+  }, [dispatch, userInfo._id, user]);
   const submitHandler = (e) => {
     e.preventDefault();
     // dispatch update profile
