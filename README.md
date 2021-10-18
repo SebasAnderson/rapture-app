@@ -403,6 +403,9 @@ $ npm start
 55. Rate and Review Products
     1. rate products
     2. create actions and reducers
+
+    ### A entregar para el 22/10 ###
+   
 56. Choose Address On Google Map
     1. create google map credentials
     2. update .env file with Google Api Key
