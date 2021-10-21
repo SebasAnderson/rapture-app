@@ -28,6 +28,7 @@ import { listProductCategories } from "./actions/productActions";
 import LoadingBox from "./components/LoadingBox";
 import MessageBox from "./components/MessageBox";
 import MapScreen from "./screens/MapScreen";
+import DashboardScreen from "./screens/DashboardScreen";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -202,7 +203,7 @@ function App() {
             exact
           ></Route>
           <Route
-            path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order"
+            path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/pageNumber/:pageNumber"
             component={SearchScreen}
             exact
           ></Route>
@@ -217,6 +218,11 @@ function App() {
             exact
           ></AdminRoute>
           <AdminRoute
+            path="/productlist/pageNumber/:pageNumber"
+            component={ProductListScreen}
+            exact
+          ></AdminRoute>
+          <AdminRoute
             path="/orderlist"
             component={OrderListScreen}
             exact
@@ -225,6 +231,10 @@ function App() {
           <AdminRoute
             path="/user/:id/edit"
             component={UserEditScreen}
+          ></AdminRoute>
+          <AdminRoute
+            path="/dashboard"
+            component={DashboardScreen}
           ></AdminRoute>
           <SellerRoute
             path="/productlist/seller"
