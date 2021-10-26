@@ -402,10 +402,7 @@ $ npm start
     3. sort by price, rating, ...
 55. Rate and Review Products
     1. rate products
-    2. create actions and reducers
-
-    ### A entregar para el 22/10 ###
-   
+    2. create actions and reducers   
 56. Choose Address On Google Map
     1. create google map credentials
     2. update .env file with Google Api Key
@@ -425,7 +422,7 @@ $ npm start
      1.  add pagination to product router in backend
      2.  apply page number to actions and reducers in frontend
      3.  show page numbers in search screen
-59. Email order receipt by mailgun
+//59. Email order receipt by mailgun
      1.  create mailgun account
      2.  add and verify your domain to mailgun
      3.  install mailgun-js
@@ -439,4 +436,4 @@ $ npm start
      1.  use socket io to create backend
      2.  create chat box component
      3.  create support screen
-62. Future Hosting
+//62. Future Hosting
